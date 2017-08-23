@@ -1,0 +1,15 @@
+version: '3'
+
+services:
+  cassandra-service:
+    build: ./cassandra_dev
+    ports:
+      - 32781:9042
+      - 32785:9160
+
+  commerce-api:
+    build: ./tomcat_dev
+    ports:
+      - 4000:80
+    depends_on:
+      - cassandra-service
