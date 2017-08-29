@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+   <head>
+      <title th:remove="all" th:text="${title}">Template for HTML email: User needs attention</title>
+      <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+      <link href="https://fonts.googleapis.com/css?family=PT+Sans|Ubuntu:400,700" rel="stylesheet"></link>
+      <style>
+          .body-mail {
+              max-width: 650px;
+			  font-family: 'Ubuntu', sans-serif;
+			  color: #585858;
+			  margin: auto;
+          }
+		  
+		  .section-banner {
+			display: inline-block;
+		  }
+		  .section-banner img{
+			  width: 100%;
+		  }
+        .banner-lefth, .banner-rigth {
+			display: inline-block;
+        }
+		  .banner-lefth {
+			  width: 50%;
+			  float: left;
+		  }
+		  .banner-rigth {
+			  width: 20%;
+			  float: right;
+		  }
+        .banner-lefth img {
+            width: 100%;
+        }
+        .banner-rigth img{
+			right: 10px;
+			top: 20px;
+            width: 100%;
+        }
+		  
+		  
+		  
+		  
+		  .section-info {
+			  text-align: center;
+		  }
+          .tlt-info{
+			  margin-top: -20px;
+			  font-size: 25px;
+              margin-bottom: 35px;
+          }
+		  
+		  .section-casa {
+			  display: inline-block;
+			  vertical-align: middle;
+		  } 
+		  .div-casa {
+		  	display: inline-block;
+			  vertical-align: middle;
+		  }
+		  .div-casa-img {
+			  width: 10%;
+			  float: left;
+			  vertical-align: middle;
+		  }	 
+		  .div-casa-img img{
+			  width: 100%;
+			  min-width: 50px;
+			  padding: 45%;
+		  }
+		  .div-casa-p {
+			  width: 70%;
+			  font-size: 15px;
+			  text-align: justify;
+			  float: right;
+			  margin: 5px;
+		  }
+		  
+		  
+		  .footer {
+			 text-align: center;
+		  }
+		  
+		  .div-footer {
+			  display: inline-block;
+			  width: 40%;
+			  min-width: 300px;
+			  margin: 3% 0;
+		  }
+		  
+		  .div-footer img{
+			  width: 100%;
+		  }
+		  
+
+		  
+		  
+		  
+		  .btn-cancelar {
+			  background-color: #C7D51F;
+			  height: 30px;
+			  display: block;
+			  margin: 2% auto;
+			  width: 150px;
+			  text-align: center;
+			  text-decoration: none;
+			  color: #585858;
+			  padding-top: 2%;
+			  cursor: pointer;
+		  }
+		  
+		  
+		  
+		  
+        .p-things {
+           font-size: 13px;
+           text-align: center;
+        }
+		  
+		  
+		  
+		  
+		  .info-compra {
+			  text-align: center;
+		  }
+		  .info-data {
+			  display: inline-block;
+			  vertical-align: top;
+			  width: 300px;
+		  }
+		  .info-data ul li {
+			  text-align: left;
+			  list-style-type: none;
+			  margin-left: -15px;
+			  max-width: 200px;
+		  }
+		  .info-data ul li span{
+			  max-width: 300px;
+		  }
+		  .div-grup {
+			width: 250px;
+		  }
+		  .div-grup img{
+			  width: 65%;
+		  }
+		  
+		  
+		  
+		  
+      </style>
+   </head>
+   <body>
+    <div class="body-mail">
+        <div class="section-banner">
+             <div class="banner-lefth">
+				 <img src="https://commerce.iothings.co/img/mail/banerHaceb.png" alt=""></img>
+             </div>
+             <div class="banner-rigth">
+                 <img src="https://commerce.iothings.co/img/mail/logohaceb.png" alt=""></img>
+             </div>
+         </div>
+         <div class="section-info">
+             <p class="tlt-info">¡<b>GRACIAS</b> POR TU COMPRA!</p>
+             <div class="info-compra">
+                 <div class="info-data">
+					<div class="div-grup">
+						<img src="https://commerce.iothings.co/img/mail/itemverde.png" alt=""></img>
+					</div>
+					<ul>
+						<li><b>Nombre: </b><span th:text="${bodySeccondMessage}"></span></li>
+						<li><b>Tipo de documento: </b><span th:text="${bodyThirdMessage}"></span></li>
+						<li><b>Número de documento: </b><span th:text="${bodyFourthMessage}"></span></li>
+						<li><b>Ciudad: </b><span th:text="${bodyFifthMessage}"></span></li>
+						<li><b>Dirección: </b><span th:text="${bodySixthMessage}"></span></li>
+						<li><b>Barrio: </b><span th:text="${bodySeventhMessage}"></span></li>
+						<li><b>Email: </b><span th:text="${bodyEighthMessage}"></span></li>
+						<li><b>Celular: </b><span th:text="${bodyNinthMessage}"></span></li>
+					</ul>
+                 </div>
+                 <div class="info-data">
+					<div class="div-grup">
+						<img src="https://commerce.iothings.co/img/mail/itemverde.png" alt=""></img>				
+					</div>
+					<ul>
+						<li><b>Orden No: </b><span th:text="${bodyFirstMessage}"></span></li>
+						<li><b>Producto: </b><span th:text="${bodyProduct}"></span></li>
+						<li><b>Precio: </b>$ <span th:text="${precio}"></span></li>
+					</ul>
+                 </div>
+             </div>
+			 <a class="btn-cancelar" th:href="${baseUrl}">Cancelar compra</a>
+         </div>
+         <div class="section-casa">
+			 <div class="div-casa div-casa-img">
+				<img src="https://commerce.iothings.co/img/mail/itemcasa.png" alt=""></img>
+			 </div>
+        	<div class="div-casa div-casa-p">
+        		<p>¡Estaremos llegando con tus productos <b>HacebCare</b> a un <b>timbre</b> de distancia! El dia <b><span th:text="${dia}"></span></b> entre las <b>2 pm y 6pm</b> en tu hogar con todo el cuidado y bienestar que te ofrece tus nuevos productos de liempieza.</p>
+        	</div>
+         </div>
+         <div class="footer">
+			<div class="div-footer">
+				<p>Otros usuarios tambien compraron</p>
+				<img src="https://commerce.iothings.co/img/mail/productoshaceb.png" alt=""></img>
+			</div>
+			<div class="div-footer">
+         		<img src="https://commerce.iothings.co/img/mail/contactohaceb.png" alt=""></img>
+         	</div>
+         	<p class="p-things">Este mensaje ha sido creado automáticamente mediante el servicio de email de Things by Pragma.</p>
+         </div>
+         
+    </div>
+   </body>
+</html>

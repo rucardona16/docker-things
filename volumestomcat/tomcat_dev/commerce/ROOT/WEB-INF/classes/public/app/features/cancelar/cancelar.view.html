@@ -1,0 +1,12 @@
+<section class="section-cancelar">
+        <div class="cancelar-div"> 
+                <h2 ng-show="!cancelar.show">{{cancelar.mensaje}}</h2>
+                <p ng-if="cancelar.id != undefine || cancelar.id != null"><b>Id de la orden: </b>{{cancelar.id}}</p>
+                <p ng-if="cancelar.producto != undefine || cancelar.producto != null"><b>Producto: </b>{{cancelar.producto}}</p>
+                <div ng-show="cancelar.show" class="spinerModal">
+                        <md-progress-circular class="spiner" md-mode="indeterminate" md-diameter="50">
+                        </md-progress-circular>
+                        <span>Cargando ...</span>
+                </div>
+        </div>
+</section>

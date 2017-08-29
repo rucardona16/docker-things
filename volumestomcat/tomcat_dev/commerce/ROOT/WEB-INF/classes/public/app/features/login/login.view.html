@@ -1,0 +1,22 @@
+<section class="baner-login">
+    <!--<div class="baner-login-text">
+        <p>BOTON E-login</p>
+        <p class="borde-baner-login"></p> 
+    </div>-->
+   <div class="section-form">
+        <p class="tlt-form"><span>LOGIN</p>
+        <p class="borde-form"></p>
+        <form class="form-login" name="formLogin" ng-submit="formLogin.$valid && login.loginClient()" role="form" novalidate>
+            <label for="">Usuario</label>
+            <input type="email" name="userName" ng-model="login.Form.userName" required>
+            <p class="requerido-home" ng-show="login.msgValid && formLogin.userName.$error.required || formLogin.userName.$touched && formLogin.userName.$error.required">Requerido *</p>
+            <p class="requerido-home" ng-show="formLogin.$error.email">Campo invalido *</p>
+            <label for="">Contraseña</label>
+            <input type="password" name="password" ng-model="login.Form.password" required>
+            <p class="requerido-home" ng-show="login.msgValid && formLogin.password.$error.required || formLogin.password.$touched && formLogin.password.$error.required">Requerido *</p>
+            <button class="btn-form-login" ng-click="login.validate(footerCtrl.$valid)">
+                ENVIAR
+            </button>
+        </form>
+    </div>
+</section>

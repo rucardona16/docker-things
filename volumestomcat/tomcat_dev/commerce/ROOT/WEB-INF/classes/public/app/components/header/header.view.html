@@ -1,0 +1,29 @@
+<header class="header">
+	<div ng-if="$root.menu" ng-click="headerCtrl.menu = !headerCtrl.menu; headerCtrl.menuClass()" class="div-hamburguesa">
+		<img src="img/menu-hamburguesa.png" alt="iothings">
+	</div>
+	<div class="div-logo">
+		<img class="logo-things" src="img/logo-things.png" alt="iothings">
+		<div ng-show="$root.loginScope && $root.menu" class="borde-logos"></div>
+		<img ng-show="$root.loginScope && $root.menu" class="logo-cliente" ng-src="img/{{$root.imgClient}}" alt="">	
+	</div>
+	<!--<div ng-class="headerCtrl.menu ? 'menu-open' : 'menu-close'" class="div-menu">
+		<nav>
+			<a id="item-menu-inicio" ng-click="headerCtrl.menu = !headerCtrl.menu; "  href="#/">INICIO</a>
+			<a id="item-menu-commerce" ng-click="headerCtrl.menu = !headerCtrl.menu; " href="#/commerce">BOTONES HABILITADOS</a>
+			<a id="item-menu-sos" ng-click="headerCtrl.menu = !headerCtrl.menu" href="">PEDIDOS</a>
+			<a id="item-menu-asistencia" ng-click="headerCtrl.menu = !headerCtrl.menu" href="">BOTON ASISTENCIA</a>
+			<a id="item-menu-energy" ng-click="headerCtrl.menu = !headerCtrl.menu" href="">IOT ENERGY</a>
+			<a id="item-menu-markethings" ng-click="headerCtrl.menu = !headerCtrl.menu" href="">MARKETHINGS</a>
+		</nav>
+	</div>-->
+	<div ng-if="$root.menu" ng-class="headerCtrl.menu ? 'menu-open' : 'menu-close'" class="div-menu">
+		<nav class="menu-login">
+			<!--<a ng-show="!$root.loginScope" id="item-menu-inicio" ng-click="headerCtrl.menu = !headerCtrl.menu; "  href="#/login">Login</a>-->
+			<a ng-show="$root.loginScope" id="item-menu-inicio" ng-click="headerCtrl.menu = !headerCtrl.menu; "  href="#/button">Botones</a>
+			<a ng-show="$root.loginScope" id="item-menu-inicio" ng-click="headerCtrl.menu = !headerCtrl.menu; "  href="#/product">Productos</a>
+			<a ng-show="$root.loginScope" id="item-menu-inicio" ng-click="headerCtrl.menu = !headerCtrl.menu; "  href="#/order">Ordenes</a>
+			<a ng-show="$root.loginScope" id="item-menu-inicio" ng-click="headerCtrl.menu = !headerCtrl.menu; headerCtrl.logout();" >Logout</a>
+		</nav>
+	</div>
+</header>

@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+   <head>
+      <title th:remove="all" th:text="${title}">Template for HTML email: User needs attention</title>
+      <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+      <link href="https://fonts.googleapis.com/css?family=PT+Sans|Ubuntu:400,700" rel="stylesheet"></link>
+      <style>
+          .body-mail {
+              max-width: 650px;
+			  font-family: 'Ubuntu', sans-serif;
+			  color: #585858;
+			  display: block;
+			  margin: auto;
+          }
+        .section-banner {
+            display: flex;
+            justify-content: space-between;
+        }
+        .banner-lefth {
+            width: 80%;
+        }
+        .banner-lefth img {
+            width: 60%;
+        }
+        .banner-rigth {
+            width: 20%;
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+        }
+        .banner-rigth img{
+            width: 100%;
+        }
+          .tlt-info{
+              text-align: center;
+			  font-size: 25px;
+              margin-top: -15px;
+              margin-bottom: 35px;
+          }
+        .info-compra {
+            display: flex;
+			justify-content: space-around;
+			flex-flow: row wrap; 
+			margin-left: 10%;
+        }
+		  .info-compra ul{
+			  list-style-type: none;
+		  }
+		  .info-compra ul, li{
+			  margin-left: -20px;
+			  margin-bottom: 5px;
+		  }
+		  .info-data{
+              width: 250px; 
+			  display: flex;
+			  flex-direction: column;
+		  }
+		  .div-grup {
+			  display: flex;
+			  align-items: center;
+			  position: relative;
+		  }
+		  .div-grup p {
+			  font-size: 12px;
+			  position: absolute;
+			  left: 26px;
+			  top: -8px;
+			  color: white;
+		  }
+          .tlt-data {
+             background-color: #2D7F7C;
+             width: 180px; 
+             height: 20px; 
+		     -webkit-transform: skew(-20deg);
+             -moz-transform: skew(-20deg);
+             -ms-transform: skew(-20deg);
+             -o-transform: skew(-20deg);
+             transform: skew(-20deg);
+          }
+		  .tlt-total {
+			  width: 110px; 
+		  }
+		  .tlt-informacion {
+			  width: 155px;
+		  }
+		  .item-data{
+			 content: "hola";
+			 width: 10px; 
+			 height: 10px; 
+			 background: #C7D51F;
+		     -webkit-transform: rotate(45deg) skew(-15deg, -15deg);
+			 -moz-transform: rotate(45deg) skew(-15deg, -15deg);
+			 -ms-transform: rotate(45deg) skew(-15deg, -15deg);
+			 -o-transform: rotate(45deg) skew(-15deg, -15deg);
+			 transform: rotate(45deg) skew(-15deg, -15deg);
+			 margin-right: 9px;
+		  }
+		  .section-casa {
+			  margin-top: -5%;
+			  display: flex;
+			  align-items: center;
+		  }
+		  .section-casa img{
+			  width: 8%;
+			  min-width: 45px;
+			  margin: 6%;
+		  }
+		  .section-casa p{
+			  text-align: justify;
+			  margin-right: 5%;
+			  font-size: 13px;
+		  }
+		  .footer {
+		    display: flex;
+			justify-content: space-around;
+			flex-flow: row wrap; 
+		  }
+		  .contacto-footer {
+			  width: 300px;
+		  }
+		  .contacto-footer img{
+			  width: 100%
+		  }
+		  .productos-footer {
+			  width: 300px;
+			  margin-left: 5%;
+			  margin-bottom: 8%
+		  }
+		  .productos-footer img{
+			  width: 100%
+		  }
+		  .btn-cancelar {
+			  background-color: #C7D51F;
+			  height: 30px;
+			  display: block;
+			  margin: 5% auto;
+			  width: 150px;
+			  text-align: center;
+			  text-decoration: none;
+			  color: #585858;
+			  padding-top: 2%
+		  }
+        .p-things {
+           font-size: 13px;
+           text-align: center;
+        }
+      </style>
+   </head>
+   <body>
+    <div class="body-mail">
+        <section class="section-banner">
+             <div class="banner-lefth">
+				 <img src="http://192.168.100.3:8080/img/mail/banerHaceb.png" alt=""></img>
+             </div>
+             <div class="banner-rigth">
+                 <img src="http://192.168.100.3:8080/img/mail/logohaceb.png" alt=""></img>
+             </div>    
+         </section>
+         <section class="section-info">
+             <p class="tlt-info">¡<b>GRACIAS</b> POR TU COMPRA!</p>
+             <div class="info-compra">
+                 <div class="info-data">
+					<div class="div-grup">
+						<div class="item-data">
+						</div>
+						<div class="tlt-data tlt-informacion">
+						</div>
+						<p>INFORMACIÓN PERSONAL</p>
+					</div>
+					<ul>
+						<li><b>Nombre: </b><span th:text="${bodySeccondMessage}"></span></li>
+						<li><b>Tipo de documento: </b><span th:text="${bodyThirdMessage}"></span></li>
+						<li><b>Número de documento: </b><span th:text="${bodyFourthMessage}"></span></li>
+						<li><b>Ciudad: </b><span th:text="${bodyFifthMessage}"></span></li>
+						<li><b>Dirección: </b><span th:text="${bodySixthMessage}"></span></li>
+						<li><b>Barrio: </b><span th:text="${bodySeventhMessage}"></span></li>
+						<li><b>Email: </b><span th:text="${bodyEighthMessage}"></span></li>
+						<li><b>Celular: </b><span th:text="${bodyNinthMessage}"></span></li>
+					</ul>
+                 </div>
+                 <div class="info-data">
+					<div class="div-grup">
+						<div class="item-data">
+						</div>
+						<div class="tlt-data tlt-total">
+						</div>
+						<p>INFORMACIÓN COMPRA</p>					
+					</div>
+					<ul>
+						<li><b>Orden No: </b><span th:text="${bodyFirstMessage}"></span></li>
+						<li><b>Producto: </b><span th:text="${bodyProduct}"></span></li>
+						<li><b>Precio: </b>$ <span th:text="${precio}"></span></li>
+					</ul>
+                 </div>
+             </div>
+			 <a class="btn-cancelar" th:href="${baseUrl}">Cancelar compra</a>
+         </section>
+         <section class="section-casa">
+         	<img src="http://192.168.100.3:8080/img/mail/itemcasa.png" alt=""></img>
+         	<p>¡Estaremos llegando con tus productos <b>HacebCare</b> a un <b>timbre</b> de distancia! Alrededor de <b>24 horas timbraremos</b>  en tu hogar con todo el cuidado y bienestar que te ofrece tus nuevos productos de liempieza.</p>
+         </section>
+         <section class="footer">
+			<div class="productos-footer">
+				<p>Otros usuarios tambien compraron</p>
+				<img src="http://192.168.100.3:8080/img/mail/productoshaceb.png" alt=""></img>
+			</div>
+			<div class="contacto-footer">
+         		<img src="http://192.168.100.3:8080/img/mail/contactohaceb.png" alt=""></img>
+         	</div>
+         </section>
+         <p class="p-things">Este mensaje ha sido creado automáticamente mediante el servicio de email de Things.</p>
+    </div>
+   </body>
+</html>

@@ -1,0 +1,47 @@
+<section class="section-order">
+    <div class="table-order">
+        <table st-table="order.displayedCollection" st-safe-src="order.displayed" class="table table-striped">
+            <thead>
+                <tr class="titulo-table">
+                    <th>Fecha</th>
+                    <th st-sort="active">Id usuario</th>
+                    <th st-sort="active">Id boton</th>
+                    <th st-sort="active">Estado</th>
+                    <th st-sort="active">Nombre Producto</th>
+                    <th st-sort="active">Dirrecion de envío</th>
+                    <!--<th><st-export></st-export></th>-->
+                </tr>
+                <tr class="search-table">
+                    <th class="data-picker" colspan="1">
+                        <md-datepicker ng-change="order.callServer()" ng-model="order.from1" md-placeholder="Desde"></md-datepicker>
+                        <md-datepicker ng-change="order.callServer()" ng-model="order.to1" md-placeholder="Hasta"></md-datepicker>
+                    </th>
+                    <th class="input-search-order" colspan="1">
+                        <input st-search="id_number_client" placeholder="Buscar por usuario" class="input-sm form-control" type="search" />
+                    </th>
+                    <th class="input-search-order" colspan="1">
+                        <input st-search="device_mac" placeholder="Buscar por bóton" class="input-sm form-control" type="search" />
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="lista-order" ng-repeat="row in order.displayedCollection | dateFilter:order.from1:order.to1">
+                    <td> <span class="titulo-item"><b>Fecha: </b></span> {{row.order_date | date:"MM/dd/yyyy '@' h:mma"}}</td>
+                    <td> <span class="titulo-item"><b>Id usuario: </b></span> {{row.id_number_client}}</td>
+                    <td> <span class="titulo-item"><b>Id boton: </b></span> {{row.device_mac}}</td>
+                    <td> <span class="titulo-item"><b>Estado: </b></span> {{row.status | uppercase}}</td>
+                    <td> <span class="titulo-item"><b>Nombre Producto: </b></span> {{row.product_name}}</td>
+                    <td> <span class="titulo-item"><b>Dirrecion de envío: </b></span> {{row.shipping_address}}, {{row.city}}</td>
+                </tr>
+            </tbody>
+            <tfoot>
+                <tr>
+                    <td colspan="5" class="text-center">
+                        <div st-items-by-page="8" st-pagination=""></div>
+                    </td>
+                </tr>
+            </tfoot>
+        </table>
+        <button class="btn-descarga" ng-click="order.csv()">Descargar Datos</button>
+    </div>
+</section>

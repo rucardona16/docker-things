@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+	<title th:remove="all" th:text="${title}">Template for HTML email: User needs attention</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+	<body>
+		<table cellpadding="0" cellspacing="0" align="center" width="80%" border="0" style="max-width:600px; color: #585858; border-spacing:0;border-collapse:collapse;vertical-align:top">
+		   <tbody>
+			    <tr>
+					<td>	
+						<img style="width:100%" src="https://commerce.iothings.co/img/mail/bannerheader.png" alt='' ></img>
+					</td>
+				</tr> 
+				<tr align="center" th:switch="${state}">
+					<p style="margin-top:0" th:case="'Compra'">¡<b>GRACIAS</b> POR TU COMPRA!</p>
+					<p style="margin-top:0" th:case="'Cancelacíon'">SU ORDEN FUE <b>CANCELADA</b></p>
+				</tr>               
+		        <tr>
+                   <td style="border-spacing:0; width:100%;">
+				   		<table width="100%">
+				   			<tbody>
+				   				<tr>
+				   					<td style="text-align:center" valign="top" width="50%">
+				   						<img width="150" src="https://commerce.iothings.co/img/mail/iteminformacion.png" alt=""></img>
+										<ul style="margin:0; list-style-type: none; font-size:13px; text-align:left">
+											<li style="margin-bottom:5px"><b>Nombre: </b><br></br><span th:text="${bodySeccondMessage}"></span></li>
+											<li style="margin-bottom:5px"><b>Tipo de documento: </b><br></br><span th:text="${bodyThirdMessage}"></span></li>
+											<li style="margin-bottom:5px"><b>Número de documento: </b><br></br><span th:text="${bodyFourthMessage}"></span></li>
+											<li style="margin-bottom:5px"><b>Ciudad: </b><br></br><span th:text="${bodyFifthMessage}"></span></li>
+											<li style="margin-bottom:5px"><b>Dirección: </b><br></br><span th:text="${bodySixthMessage}"></span></li>
+											<li style="margin-bottom:5px"><b>Barrio: </b><br></br><span th:text="${bodySeventhMessage}"></span></li>
+											<li style="margin-bottom:5px"><b>Email: </b><br></br><span th:text="${bodyEighthMessage}"></span></li>
+											<li style="margin-bottom:5px"><b>Celular: </b><br></br><span th:text="${bodyNinthMessage}"></span></li>
+											<li style="margin-bottom:5px"><b>Fecha: </b><br></br><span th:text="${fecha}"></span></li>
+											<li style="margin-bottom:5px"><b>Hora: </b><br></br><span th:text="${hora}"></span></li>
+										</ul>
+				   					</td>
+				   					<td style="text-align:center"  valign="top" width="50%">
+				   						<img width="150" src="https://commerce.iothings.co/img/mail/itemtotal.png" alt=""></img>
+										<ul style="margin:0; list-style-type: none; margin-left:px; font-size:13px; text-align:left">
+											<li style="margin-bottom:5px"><b>Orden No: </b><br></br><span th:text="${bodyFirstMessage}"></span></li>
+											<li style="margin-bottom:5px"><b>Producto: </b><br></br><span th:text="${bodyProduct}"></span></li>
+											<li style="margin-bottom:5px"><b>Precio: </b><br></br>$ <span th:text="${precio}"></span></li>
+										</ul>
+				   					</td>
+				   				</tr>
+				   			</tbody>
+				   		</table>
+                   </td>
+                </tr>
+                <tr th:if="${state} == 'Compra'">
+				   <td style="border-spacing:0; width:100%; padding:0px 20px 0px 20px; font-size:15px;">
+				   		<table width="100%">
+				   			<tbody>
+				   				<tr>
+				   					<td valign="middle" width="10%">
+              	   						<img width="60" src="https://commerce.iothings.co/img/mail/itemcasa.png" alt=""></img>
+               	   					</td>
+               	   					<td valign="top" width="90%">
+               	   						<p style="text-align: justify;">¡Estaremos llegando con tus productos <b>HacebCare</b> a un <b>timbre</b> de distancia! El día <b><span th:text="${dia}"></span></b> entre las <b>2 pm y 6pm</b> en tu hogar con todo el cuidado y bienestar que te ofrece tus nuevos productos de limpieza.</p>
+               	   					</td>
+				   				</tr>
+				   			</tbody>
+				   		</table>
+		   			</td>
+                </tr>
+                <tr th:if="${state} == 'Compra'">
+                	<td  style="border-spacing:0;width:100%;padding:20px 40px;text-align:center;font-family:Source Sans Pro;color:#444;font-size:14px">
+                		<a th:href="${baseUrl}" style="border-spacing:0;color: #585858;font-weight:600;font-size:12px;text-align:center;width:auto;background-color:#C7D51F;padding:10px 50px;text-decoration:none;">CANCELAR COMPRA</a> 
+					</td>
+				</tr>
+				<tr th:if="${state} == 'Compra'">
+              		<td align="center" style="font-family: Arial">
+						<small>Puedes cancelar tu pedido Haceb Care hasta las <b>2 pm</b> del día <b><span th:text="${dia}"></span></b>.</small>
+					</td>
+               </tr>
+				<tr>
+					<td align="center" style="padding:1% 5%">
+						<img style="width:100%" src="https://commerce.iothings.co/img/mail/footerhaceb.png" alt='' ></img>
+					</td>
+				</tr>  
+				<tr>
+					<td align="center" style="font-family: Arial">
+						<small>Este mensaje ha sido creado automáticamente mediante el servicio de email de Things by Pragma.</small>
+					</td>
+				</tr>
+		   </tbody>
+		</table>
+	</body>
+</html>

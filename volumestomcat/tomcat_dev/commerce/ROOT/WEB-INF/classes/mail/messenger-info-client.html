@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+   <head>
+      <title th:remove="all" th:text="${title}">Template for HTML email: User needs attention</title>
+      <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+      <style>
+        table {
+            border-collapse: collapse;
+            margin-top: 5%;
+        }
+        table tr td {
+            padding: 0.2%;
+            padding-left: 3%;
+            font-size: 15px;
+            font-family: Arial;
+        }
+        table td {
+            border: 1px solid black;
+        }
+        p {
+            text-align: center;
+            font-family: Arial;
+        }
+        .tlt{
+            width: 35%;   
+            font-weight: bold;
+        }
+        .p-things {
+           font-size: 13px;
+        }
+        .txt-intro {
+           margin-bottom: -4%;
+           font-size: 18px;
+        }
+      </style>
+   </head>
+   <body>
+     <p class="txt-intro"><sapn th:text="${bodyIntro}"></sapn></p>
+      <table width="50%" align="center">
+         <tr>
+            <td class="tlt"><span>ID de la venta</span></td>
+            <td><span th:text="${bodyFirstMessage}"></span></td>
+         </tr>
+         <tr>
+            <td class="tlt"><span>Estado</span></td>
+            <td><span th:text="${estadoCompra}"></span></td>
+         </tr>
+         <tr>
+            <td class="tlt"><span>Nombre del producto</span></td>
+            <td><span th:text="${bodyProduct}"></span></td>
+         </tr>
+         <tr>
+            <td class="tlt"><span>Nombre</span></td>
+            <td><span th:text="${bodySeccondMessage}"></span></td>
+         </tr>
+         <tr>
+            <td class="tlt"><span>Tipo de documento</span></td>
+            <td><span th:text="${bodyThirdMessage}"></span></td>
+         </tr>
+         <tr>
+            <td class="tlt"><span>Numero de documento</span></td>
+            <td><sapn th:text="${bodyFourthMessage}"></sapn></td>
+         </tr>
+         <tr>
+            <td class="tlt"><span>Ciudad</span></td>
+            <td><sapn th:text="${bodyFifthMessage}"></sapn></td>
+         </tr>
+         <tr>
+            <td class="tlt"><span>Dirección</span></td>
+            <td><sapn th:text="${bodySixthMessage}"></sapn></td>
+         </tr>
+         <tr>
+            <td class="tlt"><span>Barrio</span></td>
+            <td><span th:text="${bodySeventhMessage}"></span></td>
+         </tr>
+         <tr>
+            <td class="tlt"><span>Email</span></td>
+            <td><span th:text="${bodyEighthMessage}"></span></td>
+         </tr>
+         <tr>
+            <td class="tlt"><span>Celular</span></td>
+            <td><span th:text="${bodyNinthMessage}"></span></td>
+         </tr>
+         <tr>
+            <td class="tlt"><span>Fecha</span></td>
+            <td><span th:text="${fecha}"></span></td>
+         </tr>
+         <tr>
+            <td class="tlt"><span>Hora</span></td>
+            <td><span th:text="${hora}"></span></td>
+         </tr>
+      </table>
+      <p th:text="${bodyFirstMessage + '|' + estadoCompra + '|' + bodyProduct + '|' + bodySeccondMessage + '|' + bodyThirdMessage + '|' + bodyFourthMessage + '|' + bodyFifthMessage + '|' + bodySixthMessage + '|' + bodySeventhMessage + '|' + bodyEighthMessage + '|' + bodyNinthMessage + '|' + fecha + '|' + hora}"></p>
+      <p class="p-things">Este mensaje ha sido creado automáticamente mediante el servicio de email de Things by Pragma.</p>
+   </body>
+</html>
+
