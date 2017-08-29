@@ -33,7 +33,7 @@
 
   <!-- Global JNDI resources
        Documentation at /docs/jndi-resources-howto.html
-  -->
+  -->thingsbypragma/tomcat:dev
   <GlobalNamingResources>
     <!-- Editable user database that can also be used by
          UserDatabaseRealm to authenticate users
@@ -182,7 +182,7 @@
     <Connector port="4000" protocol="HTTP/1.1"
                connectionTimeout="20000"
                redirectPort="8443"
-               address="localhost" />
+               address="0.0.0.0" />
     <Engine name="commerce" defaultHost="localhost">
     <!-- <Realm className="org.apache.catalina.realm.UserDatabaseRealm"
             resourceName="UserDatabase"/> -->
@@ -192,5 +192,21 @@
 	<!--<Alias>commerce.iothings.co</Alias>-->
    </Engine>
  </Service>
+
+ <Service name="button">
+    <Connector port="3000" protocol="HTTP/1.1"
+               connectionTimeout="20000"
+               redirectPort="8443"
+               address="0.0.0.0"/>
+    <Engine name="button" defaultHost="localhost">
+    <!-- <Realm className="org.apache.catalina.realm.UserDatabaseRealm"
+            resourceName="UserDatabase"/> -->
+     <Host name="localhost"  appBase="button"
+           unpackWARs="true" autoDeploy="true">
+     </Host>
+     <!--<Alias>button.iothings.co</Alias>-->
+   </Engine>
+ </Service>
+
 
 </Server>

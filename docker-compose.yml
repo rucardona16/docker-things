@@ -1,15 +1,19 @@
-version: '3'
+version: '2'
 
 services:
   cassandra-service:
-    build: ./cassandra_dev
+    image: thingsbypragma/cassandra:dev
+    volumes:
+      - ./cassandra_dev/volumescassandra:/var/lib/cassandra
     ports:
-      - 32781:9042
-      - 32785:9160
+      - "9042:9042"
 
   commerce-api:
-    build: ./tomcat_dev
-    ports:
-      - 4000:80
+    image: thingsbypragma/tomcat:dev
+    volumes:
+      - ./volumestomcat/tomcat_dev/commerce:/usr/local/tomcat/commerce
+    command: ["/wait-for-it.sh", "cassandra-service:9042", "--", "/usr/local/tomcat/bin/catalina.sh", "run"]
     depends_on:
       - cassandra-service
+    ports:
+      - "4000:4000"

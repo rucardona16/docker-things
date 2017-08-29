@@ -1,4 +1,3 @@
-
 CREATE KEYSPACE iotcommerce WITH replication = {'class': 'SimpleStrategy', 'replication_factor': '1'}  AND durable_writes = true;
 
 CREATE TABLE iotcommerce.products_by_price_desc (
@@ -112,20 +111,18 @@ CREATE TABLE iotcommerce.orders_by_date_log (
     AND speculative_retry = '99.0PERCENTILE';
 
 CREATE TABLE iotcommerce.clients (
-    id uuid,
-    name text,
-    email text,
+    id uuid PRIMARY KEY,
     city text,
     clients_img text,
     clients_img_banner text,
     country text,
+    email text,
+    name text,
     nit text,
     password text,
     phone bigint,
-    state text,
-    PRIMARY KEY (id, name, email)
-) WITH CLUSTERING ORDER BY (name DESC, email ASC)
-    AND bloom_filter_fp_chance = 0.01
+    state text
+) WITH bloom_filter_fp_chance = 0.01
     AND caching = '{"keys":"ALL", "rows_per_partition":"NONE"}'
     AND comment = ''
     AND compaction = {'class': 'org.apache.cassandra.db.compaction.SizeTieredCompactionStrategy'}
@@ -139,6 +136,7 @@ CREATE TABLE iotcommerce.clients (
     AND read_repair_chance = 0.0
     AND speculative_retry = '99.0PERCENTILE';
 CREATE INDEX clients_email_idx ON iotcommerce.clients (email);
+CREATE INDEX clients_name_idx ON iotcommerce.clients (name);
 CREATE INDEX clients_nit_idx ON iotcommerce.clients (nit);
 
 CREATE TABLE iotcommerce.buttons_users (
@@ -390,6 +388,7 @@ CREATE TABLE iotcommerce.users (
     password text,
     phone_mac text,
     phone_number bigint,
+    remember text,
     state text,
     tyc boolean
 ) WITH bloom_filter_fp_chance = 0.01
@@ -408,4 +407,3 @@ CREATE TABLE iotcommerce.users (
 CREATE INDEX users_phone_number_idx ON iotcommerce.users (phone_number);
 CREATE INDEX users_email_idx ON iotcommerce.users (email);
 CREATE INDEX users_id_number_idx ON iotcommerce.users (id_number);
-
